@@ -1,1 +1,8 @@
 <h1>Drivers</h1>
+<ul>
+  <% @drivers.each do |driver|  %>
+    <li>
+      id: <%=driver.id%> name: <%=driver.name%> vin: <%=driver.vin%> avail: <%=driver.available%>
+    </li> 
+  <% end %>
+</ul>

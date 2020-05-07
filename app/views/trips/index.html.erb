@@ -1,1 +1,8 @@
 <h1>All our trips will live right here</h1>
+<ul>
+  <% @trips.each do |trip|  %>
+    <li>
+      id: <%=trip.id%> date: <%=trip.date%> cost: <%=trip.cost%>
+    </li>
+  <% end %>
+</ul>
