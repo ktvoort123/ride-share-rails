@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
 
   get '/passengers', to: 'passengers#index', as: 'passengers'
+
+
+  get '/trips', to: 'trips#index', as: 'trips'
 end
