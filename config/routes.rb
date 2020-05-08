@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+  # TODO: root path
+  # TODO: Refactor routes to use resources
+
   get '/drivers', to: 'drivers#index', as: 'drivers'
   get "/drivers/new", to: 'drivers#new', as: 'new_driver'
 
@@ -21,5 +23,7 @@ Rails.application.routes.draw do
   delete 'passengers/:id', to: 'passengers#destroy'
   
   
-  get '/trips', to: 'trips#index', as: 'trips'
+  get '/trips', to: 'trips#index', as: 'trips' # TODO: Do we even need this route at all?
+
+  get '/trips/:id', to: 'trips#show', as: 'trip'
 end

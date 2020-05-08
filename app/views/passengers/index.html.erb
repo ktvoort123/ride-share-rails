@@ -1,1 +1,8 @@
-<h1>Here is where the All the Passengers will Be!</h1>
+<h1>Passengers</h1>
+<ul>
+  <% @passengers.each do |passenger|  %>
+    <li>
+      id: <%=passenger.id%> name: <%=passenger.name%> Phone Number: <%=passenger.phone_num%>
+    </li> 
+  <% end %>
+</ul>
