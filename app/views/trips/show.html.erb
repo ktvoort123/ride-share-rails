@@ -8,5 +8,6 @@
 <p>Driver: <%=@trip.driver.name%></p>
 
 <%= link_to "edit", edit_trip_path(@trip.id)%>
+<%= link_to "delete", trip_path(@trip.id), method: :delete%>
 
 
