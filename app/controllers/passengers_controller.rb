@@ -26,7 +26,14 @@ class PassengersController < ApplicationController
       render :new
       return
     end
-    
+  end
+
+  def edit
+    @passenger = Passenger.find_by(id: params[:id])
+    if @passenger.nil?
+      head :not_found
+      return
+    end
   end
 
   private
