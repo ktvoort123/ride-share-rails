@@ -6,16 +6,25 @@
 <%= link_to "delete", driver_path(@driver.id), method: :delete%>
 
 <h3>Trips:</h3>
-
+<table>
+  <tr>
+    <th>id</th>
+    <th>date</th>
+    <th>rating</th>
+    <th>cost</th>
+    <th>passenger</th>
+    <%# <th>driver</th> %>
+  </tr>
   <% @driver.trips.each do |trip|  %>
-    <li>
-      <p>ID: <%=trip.id%></p>
-      <p>Date: <%=trip.date%></p>
-      <p>Rating: <%=trip.rating%></p>
-      <p>Cost: <%=trip.cost%></p>
-      <p>Passenger: <%=trip.passenger.name%></p> 
-      <p>Driver: <%=trip.driver.name%></p>
-    </li> 
+    <tr>
+      <td><%= link_to trip.id, trip_path(trip.id)%></td>
+      <td><%=trip.date%></td>
+      <td><%=trip.rating%></td>
+      <td><%=trip.cost%></td>
+      <td><%= link_to trip.passenger.name, passenger_path(trip.passenger.id)%></td> 
+      <td><%# link_to trip.driver.name, driver_path(trip.driver.id)%></td>
+    </tr> 
   <% end %>
+</table>
 
 
