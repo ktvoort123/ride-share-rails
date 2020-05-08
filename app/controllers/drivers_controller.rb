@@ -58,17 +58,18 @@ class DriversController < ApplicationController
     end
     
   end
+  
+  def destroy
+    driver = Driver.find_by(id: params[:id])
 
-  # def new
-  #   if params[:author_id]
-  #     # This is the nested route, /author/:author_id/books/new
-  #     author = Author.find_by(id: params[:author_id])
-  #     @book = author.books.new
-  #   else
-  #     # This is the 'regular' route, /books/new
-  #     @book = Book.new
-  #   end
-  # end
+    if driver.nil?
+      head :not_found
+      return
+    else
+      driver.destroy
+      redirect_to drivers_path
+    end 
+  end
 
   private
   def driver_params

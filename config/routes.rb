@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/drivers', to: "drivers#create"
   get '/drivers/:id/edit', to: "drivers#edit", as: 'edit_driver'
   patch '/drivers/:id', to: 'drivers#update'
+  delete '/drivers/:id', to: 'drivers#destroy'
+
   # get    "/books"          , to: "books#index",   as: :book
   # post   "/books"          , to: "books#create"
   # get    "/books/new"      , to: "books#new",     as: :new_book
