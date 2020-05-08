@@ -1,0 +1,16 @@
+<h2>Edit A Driver - Right Here - Right Now</h2>
+<section class = 'form'>
+  <%= form_with model: @driver, class: 'driver-form' do |f| %> 
+  <section>
+    <%= f.label :name %>
+    <%= f.text_field :name %> 
+  </section>
+
+  <section>
+    <%= f.label :vin %>
+    <%= f.text_field :vin %>
+  </section>
+
+  <%= f.submit "Update Driver", class: "driver-button" %>
+  <% end %>
+</section>
