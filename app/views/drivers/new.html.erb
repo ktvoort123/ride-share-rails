@@ -1,1 +1,16 @@
-<h1>Form for new driver will go here</h1>
+<h2>Add A Driver - Right Here - Right Now</h2>
+<section class = 'form'>
+  <%= form_with model: @driver, class: 'driver-form' do |f| %> 
+  <section>
+    <%= f.label :name %>
+    <%= f.text_field :name %> 
+  </section>
+
+  <section>
+    <%= f.label :vin %>
+    <%= f.text_field :vin %>
+  </section>
+
+  <%= f.submit "Add Driver", class: "driver-button" %>
+  <% end %>
+</section>

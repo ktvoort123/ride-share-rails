@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/drivers/new", to: 'drivers#new', as: 'new_driver'
 
   get '/drivers/:id', to: 'drivers#show', as: 'driver'
-  
+  post '/drivers', to: "drivers#create"
   
   # get    "/books"          , to: "books#index",   as: :book
   # post   "/books"          , to: "books#create"
