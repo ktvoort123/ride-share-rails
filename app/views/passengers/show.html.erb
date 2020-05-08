@@ -2,3 +2,6 @@
 
 <p>Name: <%=@passenger.name%></p>
 <p>Phone Number: <%=@passenger.phone_num%></p>
+
+<%= link_to "edit", edit_passenger_path(@passenger.id)%>
+<%= link_to "delete", passenger_path(@passenger.id), method: :delete%>
