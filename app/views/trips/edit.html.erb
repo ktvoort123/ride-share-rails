@@ -1,0 +1,24 @@
+<h2>Edit A Trip - Right Here - Right Now</h2>
+<section class = 'form'>
+  <%= form_with model: @trip, class: 'trip-form' do |f| %> 
+  <section>
+    <%= f.label :date %>
+    <%= f.text_field :date %> 
+  </section>
+
+  <section>
+    <%= f.label :cost %>
+    <%= f.text_field :cost %> 
+  </section>
+
+  <section>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %> 
+
+    
+
+  </section>
+
+  <%= f.submit "Update Trip", class: "trip-button" %>
+  <% end %>
+</section>

@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get '/trips', to: 'trips#index', as: 'trips' # TODO: Do we even need this route at all?
 
   get '/trips/:id', to: 'trips#show', as: 'trip'
+  get '/trips/:id/edit', to: 'trips#edit', as: 'edit_trip'
 end
