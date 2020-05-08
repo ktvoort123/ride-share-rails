@@ -6,3 +6,7 @@
 <p>Cost: <%=@trip.cost%></p>
 <p>Passenger: <%=@trip.passenger.name%></p> 
 <p>Driver: <%=@trip.driver.name%></p>
+
+<%= link_to "edit", edit_trip_path(@trip.id)%>
+
+
