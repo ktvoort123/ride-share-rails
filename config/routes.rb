@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/passengers/new', to: 'passengers#new', as: 'new_passenger'
 
   get '/passengers/:id', to: 'passengers#show', as: 'passenger'
+  post '/passengers', to: 'passengers#create'
   
   
   get '/trips', to: 'trips#index', as: 'trips'
