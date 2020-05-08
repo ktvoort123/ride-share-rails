@@ -1,0 +1,16 @@
+<h2>Add A Passenger - Right Here - Right Now</h2>
+<section class = 'form'>
+  <%= form_with model: @passenger, class: 'passenger-form' do |f| %> 
+  <section>
+    <%= f.label :name %>
+    <%= f.text_field :name %> 
+  </section>
+
+  <section>
+    <%= f.label :phone_num %>
+    <%= f.text_field :phone_num %>
+  </section>
+
+  <%= f.submit "Add Passenger", class: "passenger-button" %>
+  <% end %>
+</section>
