@@ -7,8 +7,8 @@ describe DriversController do
     it "responds with success when there are many drivers saved" do
       # Arrange
       # Ensure that there is at least one Driver saved
-      Driver.new(name: 'Kelly', vin: '567', available: true)
-      Driver.new(name: 'Gene', vin: '1234', available: true)
+      Driver.create(name: 'Kelly', vin: '567', available: true)
+      Driver.create(name: 'Gene', vin: '1234', available: true)
 
       # Act
       get drivers_path
