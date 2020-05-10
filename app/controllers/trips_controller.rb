@@ -27,7 +27,9 @@ class TripsController < ApplicationController
       head :not_found
       return
     else
-      trip = Trip.new(driver_id: 30, passenger_id: passenger.id, date: Date.today, rating: nil, cost: 50) # cost and driver need to be changed to not be hardcoded
+      cost = Trip.trip_cost
+      driver = Trip.assign_driver
+      trip = Trip.new(driver_id: driver.id, passenger_id: passenger.id, date: Date.today, rating: nil, cost: cost)
       if trip.save
         redirect_to trip_path(trip.id)
         return
