@@ -2,8 +2,7 @@
 
 <p>Name: <%=@passenger.name%></p>
 <p>Phone Number: <%=@passenger.phone_num%></p>
-
-
+<p>Total Spent: $<%= @passenger.total_spent %> </p>
 
 <%= link_to "edit", edit_passenger_path(@passenger.id)%>
 <%= link_to "delete", passenger_path(@passenger.id), method: :delete%>
