@@ -9,6 +9,8 @@
 <%= link_to "delete", passenger_path(@passenger.id), method: :delete%>
 
 <h3>Trips:</h3>
+<%= link_to "create new trip", passenger_trips_path(@passenger.id), method: :post%>
+
 <table>                         
   <tr>                          
     <th>ID</th>
@@ -19,7 +21,7 @@
   </tr>
 <% @passenger.trips.each do |trip|  %>
   <tr>
-    <td><%= trip.id %></td> 
+    <td><%= link_to trip.id, trip_path(trip.id) %></td>
     <td><%= trip.date %></td> 
     <td><%= trip.rating %></td> 
     <td><%= trip.cost %></td> 

@@ -21,6 +21,24 @@ class TripsController < ApplicationController
     end
   end
 
+  def create
+    passenger = Passenger.find_by(id: params[:passenger_id])
+    if passenger.nil?
+      head :not_found
+      return
+    else
+      trip = Trip.new(driver_id: 30, passenger_id: passenger.id, date: Date.today, rating: nil, cost: 50) # cost and driver need to be changed to not be hardcoded
+      if trip.save
+        redirect_to trip_path(trip.id)
+        return
+      else
+        redirect_to passenger_path(passenger.id)
+        return
+      end
+    end
+
+  end
+
   def update
     @trip = Trip.find_by(id: params[:id])
 

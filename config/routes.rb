@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   resources :drivers
   resources :passengers do
-    resources :trips, only: [:index, :new]
+    resources :trips, only: [:create]
   end
   
   # get '/passengers', to: 'passengers#index', as: 'passengers'

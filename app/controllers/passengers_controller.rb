@@ -45,7 +45,6 @@ class PassengersController < ApplicationController
     elsif @passenger.update(passenger_params)
       redirect_to passenger_path
       return
-    else
       render :edit
       return
     end
