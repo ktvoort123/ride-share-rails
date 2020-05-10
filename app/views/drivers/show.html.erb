@@ -4,6 +4,15 @@
 <p>Total Earned: <%=@driver.total_earned%></p>
 <p>Average Rating: <%=@driver.average_rating%></p>
 
+<section class='driver-availablity'>
+  <% if !@driver.available%>
+    <%= link_to "Make Available", mark_available_path(@driver), method: :patch%>
+  <% else %>
+    <%= link_to "Make Unavailable", mark_unavailable_path(@driver), method: :patch%>
+    <%end%>  
+</section>
+
+
 <%= link_to "edit", edit_driver_path(@driver.id)%>
 <%= link_to "delete", driver_path(@driver.id), method: :delete%>
 

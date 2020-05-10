@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :trips, only: [:show, :edit, :update, :destroy]
+  patch '/drivers/:id/mark_available', to: 'drivers#mark_available', as: 'mark_available'
+  patch '/drivers/:id/mark_unavailable', to: 'drivers#mark_unavailable', as: 'mark_unavailable'
   
   
   # get '/drivers', to: 'drivers#index', as: 'drivers'
