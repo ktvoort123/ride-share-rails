@@ -45,7 +45,7 @@ class TripsController < ApplicationController
     elsif @trip.destroy
       redirect_to trips_path
       return
-    else # to-do: what are we gonna do here huh
+    elsroutese # to-do: what are we gonna do here huh
       render trip_path
       return
     end

@@ -3,31 +3,39 @@ Rails.application.routes.draw do
   # TODO: root path
   # TODO: Refactor routes to use resources
 
-  get '/drivers', to: 'drivers#index', as: 'drivers'
-  get "/drivers/new", to: 'drivers#new', as: 'new_driver'
+  # get '/drivers', to: 'drivers#index', as: 'drivers'
+  # get "/drivers/new", to: 'drivers#new', as: 'new_driver'
 
-  get '/drivers/:id', to: 'drivers#show', as: 'driver'
-  post '/drivers', to: "drivers#create"
-  get '/drivers/:id/edit', to: "drivers#edit", as: 'edit_driver'
-  patch '/drivers/:id', to: 'drivers#update'
-  delete '/drivers/:id', to: 'drivers#destroy'
+  # get '/drivers/:id', to: 'drivers#show', as: 'driver'
+  # post '/drivers', to: "drivers#create"
+  # get '/drivers/:id/edit', to: "drivers#edit", as: 'edit_driver'
+  # patch '/drivers/:id', to: 'drivers#update'
+  # delete '/drivers/:id', to: 'drivers#destroy'
   
+  resources :drivers
+  resources :passengers do
+    resources :trips, only: [:index, :new]
+  end
   
-  get '/passengers', to: 'passengers#index', as: 'passengers'
-  get '/passengers/new', to: 'passengers#new', as: 'new_passenger'
+  # get '/passengers', to: 'passengers#index', as: 'passengers'
+  # get '/passengers/new', to: 'passengers#new', as: 'new_passenger'
 
-  get '/passengers/:id', to: 'passengers#show', as: 'passenger'
-  post '/passengers', to: 'passengers#create'
-  get '/passengers/:id/edit', to: 'passengers#edit', as: 'edit_passenger'
-  patch '/passengers/:id', to: 'passengers#update'
-  delete 'passengers/:id', to: 'passengers#destroy'
+  # get '/passengers/:id', to: 'passengers#show', as: 'passenger'
+  # post '/passengers', to: 'passengers#create'
+  # get '/passengers/:id/edit', to: 'passengers#edit', as: 'edit_passenger'
+  # patch '/passengers/:id', to: 'passengers#update'
+  # delete 'passengers/:id', to: 'passengers#destroy'
   
   
-  get '/trips', to: 'trips#index', as: 'trips' # TODO: Do we even need this route at all?
+  # get '/trips', to: 'trips#index', as: 'trips' # TODO: Do we even need this route at all?
 
   get '/trips/:id', to: 'trips#show', as: 'trip'
   get '/trips/:id/edit', to: 'trips#edit', as: 'edit_trip'
   patch '/trips/:id', to: 'trips#update'
   delete '/trips/:id', to: 'trips#destroy'
+
+
+  resources :trips, only: [:show, :edit, :update, :destroy]
+
 
 end
