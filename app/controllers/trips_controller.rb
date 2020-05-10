@@ -61,7 +61,7 @@ class TripsController < ApplicationController
       head :not_found
       return
     elsif @trip.destroy
-      redirect_to trips_path
+      redirect_to root_path
       return
     elsroutese # to-do: what are we gonna do here huh
       render trip_path

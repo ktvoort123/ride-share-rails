@@ -7,5 +7,5 @@ class Passenger < ApplicationRecord
     return self.trips.map { |trip| trip.cost }.sum
   end
 
-  
+
 end
