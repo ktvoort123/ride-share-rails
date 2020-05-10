@@ -9,6 +9,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav>
+    <ul>
+      <li><%= link_to 'Home', root_path %> </li>
+      <li><%= link_to 'All Drivers', drivers_path %> </li>
+      <li><%= link_to 'All Passengers', passengers_path %> </li>
+      <li><%= link_to 'Add A Driver', new_driver_path %> </li>
+      <li><%= link_to 'Add A Passenger', new_passenger_path %> </li>
+    </ul>
+  </nav>
+
   <body>
     <%= yield %>
   </body>

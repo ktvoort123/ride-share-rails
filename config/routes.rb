@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # TODO: root path
-  # TODO: Refactor routes to use resources
 
+  root to: 'homepages#index'
+
+  resources :drivers
+  
+  resources :passengers do
+    resources :trips, only: [:create]
+  end
+
+  resources :trips, only: [:show, :edit, :update, :destroy]
+  
+  
   # get '/drivers', to: 'drivers#index', as: 'drivers'
   # get "/drivers/new", to: 'drivers#new', as: 'new_driver'
 
@@ -11,12 +20,7 @@ Rails.application.routes.draw do
   # get '/drivers/:id/edit', to: "drivers#edit", as: 'edit_driver'
   # patch '/drivers/:id', to: 'drivers#update'
   # delete '/drivers/:id', to: 'drivers#destroy'
-  
-  resources :drivers
-  resources :passengers do
-    resources :trips, only: [:create]
-  end
-  
+
   # get '/passengers', to: 'passengers#index', as: 'passengers'
   # get '/passengers/new', to: 'passengers#new', as: 'new_passenger'
 
@@ -28,14 +32,11 @@ Rails.application.routes.draw do
   
   
   # get '/trips', to: 'trips#index', as: 'trips' # TODO: Do we even need this route at all?
-
-  get '/trips/:id', to: 'trips#show', as: 'trip'
-  get '/trips/:id/edit', to: 'trips#edit', as: 'edit_trip'
-  patch '/trips/:id', to: 'trips#update'
-  delete '/trips/:id', to: 'trips#destroy'
-
-
-  resources :trips, only: [:show, :edit, :update, :destroy]
+  # get '/trips/:id', to: 'trips#show', as: 'trip'
+  # get '/trips/:id/edit', to: 'trips#edit', as: 'edit_trip'
+  # patch '/trips/:id', to: 'trips#update'
+  # delete '/trips/:id', to: 'trips#destroy'
+  
 
 
 end
