@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   patch '/drivers/:id/mark_available', to: 'drivers#mark_available', as: 'mark_available'
   patch '/drivers/:id/mark_unavailable', to: 'drivers#mark_unavailable', as: 'mark_unavailable'
   
+  # this is a possible route for displaying the submit rating on the trip show
+  patch 'trips/:id/submit_rating', to: 'trips#submit_rating', as: 'submit_rating'
+  
   
   # get '/drivers', to: 'drivers#index', as: 'drivers'
   # get "/drivers/new", to: 'drivers#new', as: 'new_driver'

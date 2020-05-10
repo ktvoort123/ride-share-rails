@@ -65,11 +65,24 @@ class TripsController < ApplicationController
     elsif @trip.destroy
       redirect_to root_path
       return
-    elsroutese # to-do: what are we gonna do here huh
+    else # to-do: what are we gonna do here huh
       render trip_path
       return
     end
 
+  end
+
+  # maybe we'll use this, and maybe we won't!
+  def submit_rating
+    @trip = Trip.find_by(id: params[:id])
+
+    if @trip.nil?
+      head :not_found
+      return
+    else
+      @trip.rating(trip_params)
+      trip.save
+    end
   end
 
 

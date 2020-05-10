@@ -2,7 +2,9 @@
 
 <p>ID: <%=@trip.id%></p>
 <p>Date: <%=@trip.date%></p>
-<p>Rating: <%=@trip.rating%></p>
+<p>Rating: <%= @trip.rating %></p>
+<%# either display the rating, OR display the drop down menu with a link to submit it %>
+
 <p>Cost: <%=@trip.cost%></p>
 <p>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id)%></p> 
 
