@@ -7,19 +7,42 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&display=swap" rel="stylesheet"> 
   </head>
 
+<header class='header'>
+  <h1 class='header-title'>Gryft</h1>
+
   <nav>
-    <ul>
-      <li><%= link_to 'Home', root_path %> </li>
-      <li><%= link_to 'All Drivers', drivers_path %> </li>
-      <li><%= link_to 'All Passengers', passengers_path %> </li>
-      <li><%= link_to 'Add A Driver', new_driver_path %> </li>
-      <li><%= link_to 'Add A Passenger', new_passenger_path %> </li>
-    </ul>
+    <div class="dropdown">
+      <button class="dropbtn"><%= link_to 'Home', root_path %></button>
+    </div>
+    <div class='dropdown'>
+        <button class="dropbtn">Drivers</button>
+        <div class='dropdown-content'>
+          <%= link_to 'All Drivers', drivers_path %>
+          <%= link_to 'Add A Driver', new_driver_path %>
+        </div>
+    </div>
+    <div class='dropdown'>
+      <button class="dropbtn">Passengers</button>
+          <div class='dropdown-content'>
+            <%= link_to 'All Passengers', passengers_path %>
+            <%= link_to 'Add A Passenger', new_passenger_path %>
+          </div>
+    </div>
   </nav>
+  </header>
+
+
 
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    America's number one ride share app - not stealing your money since 2020!
+  </footer>
 </html>
+
