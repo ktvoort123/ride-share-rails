@@ -35,11 +35,11 @@ describe DriversController do
     
     it "responds with success when showing an existing valid driver" do
       # Arrange
-      driver = Driver.new(id: 1, name: 'April', vin: '123', available: true)
-      driver.save
+      driver = Driver.create(name: 'April', vin: '123', available: true)
+      
 
       # Act
-      get driver_path(1)
+      get driver_path(driver)
 
       # Assert
       must_respond_with :success
@@ -91,7 +91,7 @@ describe DriversController do
       must_redirect_to driver_path(new_driver)
     end
 
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
+    it "does not create a driver if the form data violates Driver validations" do
       # Arrange
       # Set up the form data so that it violates Driver validations
       driver_info = {
@@ -241,12 +241,10 @@ describe DriversController do
       must_redirect_to drivers_path
     end
 
-    it "does not change the db when the driver does not exist, then responds with " do
+    it "does not change the db when the driver does not exist, then responds with not found" do
       # Arrange
       # Ensure there is an invalid id that points to no driver
       id = 'taco'
-
-      delete driver_path(id)
 
       # Act-Assert
       # Ensure that there is no change in Driver.count
