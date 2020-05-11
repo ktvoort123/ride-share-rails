@@ -2,8 +2,24 @@
 
 <p>ID: <%=@trip.id%></p>
 <p>Date: <%=@trip.date%></p>
-<p>Rating: <%= @trip.rating %></p>
 <%# either display the rating, OR display the drop down menu with a link to submit it %>
+
+<% if @trip.rating%>
+  <p>Rating: <%= @trip.rating %></p>
+<%else%>
+  <section class = 'form'>
+    <%= form_with model: @trip, class: 'trip-form' do |f| %> 
+
+    <section>
+      <%= f.label :rating %>
+      <%= f.select :rating, [[nil,nil],[1,1],[2,2],[3,3],[4,4],[5,5],] %>
+    </section>
+
+    <%= f.submit "Update Trip", class: "trip-button" %>
+    <% end %>
+  </section>
+<%end%>
+
 
 <p>Cost: <%=@trip.cost%></p>
 <p>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id)%></p> 

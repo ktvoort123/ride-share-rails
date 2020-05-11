@@ -75,6 +75,7 @@ class TripsController < ApplicationController
   # maybe we'll use this, and maybe we won't!
   def submit_rating
     @trip = Trip.find_by(id: params[:id])
+    puts "trying to change rating"
 
     if @trip.nil?
       head :not_found
@@ -82,6 +83,7 @@ class TripsController < ApplicationController
     else
       @trip.rating(trip_params)
       trip.save
+      redirect_to trip_path
     end
   end
 
