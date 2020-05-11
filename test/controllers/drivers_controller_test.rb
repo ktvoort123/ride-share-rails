@@ -197,11 +197,13 @@ describe DriversController do
       must_respond_with :not_found
     end
     
-    it "does not create a driver if the form data violates Driver validations, and responds with a redirect" do
+    it "does not update a driver if the form data violates Driver validations, and responds with a redirect" do
       # Arrange
       # Ensure there is an existing driver saved
-      driver = Driver.create(name: 'Kay', vin: 'J8E6NN75309Y', available: true)
+      vin = 'J8E6NN75309Y'
+      driver = Driver.create(name: 'Kay', vin: vin, available: true)
       # Assign the existing driver's id to a local variable
+      
       id = driver.id
       # Set up the form data so that it violates Driver validations
       updated_info = {
@@ -221,6 +223,9 @@ describe DriversController do
       # Assert
       # Check that the controller redirects
       # we are not redirecting, but re-rendering the form and displaying errors
+
+      found_driver = Driver.find_by(id: id)
+      expect(found_driver.vin).must_equal vin
     end
   end
   

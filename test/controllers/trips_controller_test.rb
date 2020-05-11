@@ -123,10 +123,73 @@ describe TripsController do
 
     end
 
+    it "does not update any trips if given an invalid id, and responds with a 404" do
+      
+      bad_id = "not an id"
+
+      pass = Passenger.create(name: 'Kevin', phone_num: '555-7890')
+      driver = Driver.create(name: 'Lauren', vin: '243434343', available: true)
+
+      updated_info = {
+        trip: {
+          passenger_id: pass.id, 
+          driver_id: driver.id, 
+          date: Date.today, 
+          cost: 60000, 
+          rating: 3
+        }
+      }
+
+      expect { patch trip_path(id: bad_id), params: updated_info}.wont_change "Trip.count"
+
+      must_respond_with :not_found
     
+    end
+
+    it "does not update a trip if the form data violates trip validations" do
+      date = Date.today
+      pass = Passenger.create(name: 'Ruth', phone_num: '555-343434')
+      driver = Driver.create(name: 'Sally', vin: '2434444434343', available: true)
+      trip = Trip.create(passenger_id: pass.id, driver_id: driver.id, date: date, cost: 33333, rating: nil)
+
+      id = trip.id
+     
+      updated_info = {
+        trip: {
+          passenger_id: pass.id, 
+          driver_id: driver.id, 
+          date: nil, 
+          cost: 33333, 
+          rating: nil,
+        }
+      }
+
+      expect { patch trip_path(id: id), params: updated_info}.wont_change "Trip.count"
+
+      found_trip = Trip.find_by(id: id)
+      expect(found_trip.date).must_equal date
+
+    end
   end
 
   describe "destroy" do
-    # Your tests go here
+    it "destroys the trip instance in db when trip exists, then redirects" do
+      pass = Passenger.create(name: 'Dog', phone_num: '555-555555555')
+      driver = Driver.create(name: 'Cat', vin: '9999999', available: true)
+      trip_to_delete = Trip.create(passenger_id: pass.id, driver_id: driver.id, date: Date.today, cost: 12345, rating: nil)
+
+      expect {delete trip_path(trip_to_delete)}.must_differ "Trip.count", -1
+    end
+    
+    it "does not change the db when the trip does not exist, then responds with not found" do
+      bad_id = "laskdfjasldfj"
+
+      expect { delete trip_path(id: bad_id)}.wont_change "Trip.count"
+
+      must_respond_with :not_found
+
+    end
+
   end
+
 end

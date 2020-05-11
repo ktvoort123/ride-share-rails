@@ -98,7 +98,7 @@ describe PassengersController do
   end
 
   describe "update" do
-    it "can update an existing driver with valid information accurately, and redirect" do
+    it "can update an existing passenger with valid information accurately, and redirect" do
 
       old_info = Passenger.create(name: 'April', phone_num: '456')
 
@@ -141,14 +141,15 @@ describe PassengersController do
       must_respond_with :not_found
     end
 
-    it "does not create a passenger if the form data violates Passenger validations" do
-      passenger = Passenger.create(name: 'Finnegan', phone_num: '456-1029')
+    it "does not update a passenger if the form data violates Passenger validations" do
+      name = "Finnegan"
+      passenger = Passenger.create(name: name, phone_num: '456-1029')
 
       id = passenger.id
 
       updated_info = {
         passenger:  {
-          name: 'Funnigan',
+          name: nil,
           phone_num: '123-9876'
         }
       }
@@ -156,12 +157,16 @@ describe PassengersController do
       expect {
         patch passenger_path(id: id), params: updated_info
       }.wont_change "Passenger.count"
+
+      found_passenger = Passenger.find_by(id: id)
+      expect(found_passenger.name).must_equal name
+
     end
 
   end
 
   describe "destroy" do
-    it "destroys the passenger instance in db when driver exists, then redirects" do
+    it "destroys the passenger instance in db when passenger exists, then redirects" do
       passenger_to_delete = Passenger.create(name: 'August', phone_num: '123')
 
       expect {
