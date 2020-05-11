@@ -51,7 +51,7 @@ class TripsController < ApplicationController
       redirect_to trip_path
       return
     else
-      render :edit
+      render :edit #, status: :not_found
       return
     end
   end

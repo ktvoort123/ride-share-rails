@@ -14,13 +14,7 @@ class DriversController < ApplicationController
 
   def new
     @driver = Driver.new
-    
   end
-
-  # params[:driver_id]
-  #     driver = Driver.find_by(id: params[:driver_id])
-  #     @trip = driver.trips.new
-  #   else
 
   def create
     @driver = Driver.new(driver_params)
@@ -30,7 +24,7 @@ class DriversController < ApplicationController
       redirect_to driver_path(@driver.id)
       return
     else
-      render :new
+      render :new #, status: :bad_request
       return
     end
 
