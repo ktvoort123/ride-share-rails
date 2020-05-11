@@ -31,7 +31,13 @@
       <td><%=trip.date%></td>
       <td><%=trip.rating%></td>
       <td><%=number_to_currency(Trip.display_dollars(trip.cost))%></td>
-      <td><%= link_to trip.passenger.name, passenger_path(trip.passenger.id)%></td> 
+      <td>
+        <% if trip.passenger.nil?%>
+          Passenger does not exist
+        <% else %>
+          <%= link_to trip.passenger.name, passenger_path(trip.passenger.id)%>
+        <% end %> 
+      </td> 
     </tr> 
   <% end %>
 </table>

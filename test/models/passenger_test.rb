@@ -63,9 +63,6 @@ describe Passenger do
       
     end
 
-    describe "complete trip" do
-      # Your code here
-    end
     # You may have additional methods to test here
     describe "total_spent" do
       

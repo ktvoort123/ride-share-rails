@@ -22,10 +22,23 @@
 
 
 <p>Cost: <%=number_to_currency(Trip.display_dollars(@trip.cost))%></p>
-<p>Passenger: <%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id)%></p> 
+<p>Passenger: 
+<%if @trip.passenger.nil?%>
+ Passenger does not exist
+<%else%>
+  <%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id)%>
+<%end%>  
+</p> 
 
 
-<p>Driver: <%= link_to @trip.driver.name, driver_path(@trip.driver.id)%></p>
+<p>Driver: 
+
+<%if @trip.driver.nil?%>
+ Driver does not exist
+<%else%>
+  <%= link_to @trip.driver.name, driver_path(@trip.driver.id)%>
+<%end%>  
+</p> 
 
 <%= link_to "edit", edit_trip_path(@trip.id)%>
 <%= link_to "delete", trip_path(@trip.id), method: :delete%>

@@ -264,11 +264,11 @@ describe DriversController do
     end
   end
 
-  describe 'mark_available' do
+  describe 'change availability' do
     it 'changes a driver status to available' do
       driver = Driver.create(name: 'June', vin: '142536', available: false)
 
-      patch mark_available_path(driver)
+      patch change_availability_path(driver)
 
       driver.reload
       expect(driver.available).must_equal true
@@ -277,20 +277,10 @@ describe DriversController do
       must_redirect_to driver_path
     end
 
-    it 'responds with redirect in the case that the driver cannot be found' do
-      bad_id = 'taco'
-
-      patch mark_available_path(id: bad_id)
-
-      must_respond_with :not_found
-    end
-  end
-
-  describe 'mark_unavailable' do
     it 'changes a driver status to unavailable' do
       driver = Driver.create(name: 'June', vin: '142536', available: true)
 
-      patch mark_unavailable_path(driver)
+      patch change_availability_path(driver)
 
       driver.reload
       expect(driver.available).must_equal false
@@ -302,10 +292,12 @@ describe DriversController do
     it 'responds with redirect in the case that the driver cannot be found' do
       bad_id = 'taco'
 
-      patch mark_unavailable_path(id: bad_id)
+      patch change_availability_path(id: bad_id)
 
       must_respond_with :not_found
     end
   end
+
+  
 
 end

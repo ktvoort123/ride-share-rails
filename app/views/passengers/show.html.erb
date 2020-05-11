@@ -24,8 +24,13 @@
     <td><%= trip.date %></td> 
     <td><%= trip.rating %></td> 
     <td><%= number_to_currency(Trip.display_dollars(trip.cost)) %></td> 
-    <td><%= link_to trip.driver.name, driver_path(trip.driver.id) %></td>
-
+    <td>    
+      <% if trip.driver.nil?%>
+        Driver does not exist
+      <% else %>
+        <%= link_to trip.driver.name, driver_path(trip.driver.id) %>
+      <% end %> 
+    </td>
   </tr>
 <% end %>
 </table> 
