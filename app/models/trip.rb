@@ -15,4 +15,8 @@ class Trip < ApplicationRecord
     driver.save
     return driver
   end
+
+  def self.display_dollars(cost_in_cents)
+    return cost_in_cents / 100.0
+  end
 end

@@ -111,7 +111,7 @@ describe DriversController do
       # Assert
       # Check that the controller redirects
       # We are not redirecting, we are rendering the "new" form again and displaying errors - this is fine according to the testing directions
-      
+      must_respond_with :bad_request
     end
   end
   
@@ -226,6 +226,8 @@ describe DriversController do
 
       found_driver = Driver.find_by(id: id)
       expect(found_driver.vin).must_equal vin
+
+      must_respond_with :bad_request
     end
   end
   
@@ -261,4 +263,49 @@ describe DriversController do
       must_respond_with :not_found
     end
   end
+
+  describe 'mark_available' do
+    it 'changes a driver status to available' do
+      driver = Driver.create(name: 'June', vin: '142536', available: false)
+
+      patch mark_available_path(driver)
+
+      driver.reload
+      expect(driver.available).must_equal true
+
+      must_respond_with :redirect
+      must_redirect_to driver_path
+    end
+
+    it 'responds with redirect in the case that the driver cannot be found' do
+      bad_id = 'taco'
+
+      patch mark_available_path(id: bad_id)
+
+      must_respond_with :not_found
+    end
+  end
+
+  describe 'mark_unavailable' do
+    it 'changes a driver status to unavailable' do
+      driver = Driver.create(name: 'June', vin: '142536', available: true)
+
+      patch mark_unavailable_path(driver)
+
+      driver.reload
+      expect(driver.available).must_equal false
+
+      must_respond_with :redirect
+      must_redirect_to driver_path
+    end
+
+    it 'responds with redirect in the case that the driver cannot be found' do
+      bad_id = 'taco'
+
+      patch mark_unavailable_path(id: bad_id)
+
+      must_respond_with :not_found
+    end
+  end
+
 end

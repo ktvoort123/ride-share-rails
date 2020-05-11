@@ -1,14 +1,14 @@
 <h1><%=@driver.name%></h1>
 <p>Vin: <%=@driver.vin%></p>
 <p>This Driver is <%=@driver.available ? "Available" : "Unavailable"%></p>
-<p>Total Earned: <%=@driver.total_earned%></p>
+<p>Total Earned: <%=number_to_currency(@driver.total_earned)%></p>
 <p>Average Rating: <%=@driver.average_rating%></p>
 
 <section class='driver-availablity'>
   <% if !@driver.available%>
-    <%= link_to "Make Available", mark_available_path(@driver), method: :patch%>
+    <%= link_to "Make Available", change_availability_path(@driver), method: :patch%>
   <% else %>
-    <%= link_to "Make Unavailable", mark_unavailable_path(@driver), method: :patch%>
+    <%= link_to "Make Unavailable", change_availability_path(@driver), method: :patch%>
     <%end%>  
 </section>
 
@@ -30,7 +30,7 @@
       <td><%= link_to trip.id, trip_path(trip.id)%></td>
       <td><%=trip.date%></td>
       <td><%=trip.rating%></td>
-      <td><%=trip.cost%></td>
+      <td><%=number_to_currency(Trip.display_dollars(trip.cost))%></td>
       <td><%= link_to trip.passenger.name, passenger_path(trip.passenger.id)%></td> 
     </tr> 
   <% end %>

@@ -11,37 +11,37 @@ class DriversController < ApplicationController
       return
     end
   end
-
+  
   def new
     @driver = Driver.new
   end
-
+  
   def create
     @driver = Driver.new(driver_params)
     @driver.available = true
-
+    
     if @driver.save
       redirect_to driver_path(@driver.id)
       return
     else
-      render :new #, status: :bad_request
+      render :new, status: :bad_request
       return
     end
-
+    
   end
-
+  
   def edit
     @driver = Driver.find_by(id: params[:id])
-
+    
     if @driver.nil?
       head :not_found
       return
     end
   end
-
+  
   def update
     @driver = Driver.find_by(id: params[:id])
-
+    
     if @driver.nil?
       head :not_found
       return
@@ -49,7 +49,7 @@ class DriversController < ApplicationController
       redirect_to driver_path
       return
     else 
-      render :edit
+      render :edit, status: :bad_request
       return
     end
     
@@ -57,7 +57,7 @@ class DriversController < ApplicationController
   
   def destroy
     driver = Driver.find_by(id: params[:id])
-
+    
     if driver.nil?
       head :not_found
       return
@@ -66,38 +66,25 @@ class DriversController < ApplicationController
       redirect_to drivers_path
     end 
   end
-
-  def mark_available
+  
+  def change_availability
     driver = Driver.find_by(id: params[:id])
     if driver.nil?
       head :not_found
       return
     else
-      driver.available = true
-      driver.save
+      driver.change_available_status
       redirect_to driver_path
       return
     end 
   end
-
-  def mark_unavailable
-    driver = Driver.find_by(id: params[:id])
-    if driver.nil?
-      head :not_found
-      return
-    else
-      driver.available = false
-      driver.save
-      redirect_to driver_path
-      return
-    end 
-  end
-
+  
+  
   private
   def driver_params
     return params.require(:driver).permit(:id, :name, :vin, :available)
   end
-
+  
 end
 
 

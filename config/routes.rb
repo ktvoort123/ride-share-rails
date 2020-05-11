@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   end
 
   resources :trips, only: [:show, :edit, :update, :destroy]
-  patch '/drivers/:id/mark_available', to: 'drivers#mark_available', as: 'mark_available'
-  patch '/drivers/:id/mark_unavailable', to: 'drivers#mark_unavailable', as: 'mark_unavailable'
+  patch '/drivers/:id/change_availability', to: 'drivers#change_availability', as: 'change_availability'
+  
   
   # this is a possible route for displaying the submit rating on the trip show
   patch 'trips/:id/submit_rating', to: 'trips#submit_rating', as: 'submit_rating'

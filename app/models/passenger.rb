@@ -4,7 +4,7 @@ class Passenger < ApplicationRecord
   validates :phone_num, presence: true
 
   def total_spent
-    return self.trips.map { |trip| trip.cost }.sum
+    return self.trips.map { |trip| trip.cost/100.0 }.sum
   end
 
 
