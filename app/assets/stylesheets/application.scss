@@ -28,6 +28,15 @@ body {
   background-color: #aec3b0
 }
 
+h1 a {
+  color: #01161E;
+}
+
+h1 a:hover {
+  text-decoration: none;
+  color: #124559
+}
+
 a {
   color: #598392;
 }
@@ -170,3 +179,57 @@ a {
   font-family: 'Pacifico', cursive;
   text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
+
+.show-table {
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #EFF6E0; 
+  width: 600px;
+}
+
+.show-info {
+  margin-right: auto;
+  margin-left: auto;
+  width: 600px;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.user-picture {
+  border-radius: 50%;
+  width: 175px;
+  padding-top: 30px;
+}
+
+.table-class {
+  text-align: center;
+}
+
+.bold-tag {
+  font-weight: bolder;
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.show-title  {
+  grid-column: 1 / span 3;
+}
+
+.mini-info {
+  grid-row: 2 / span 1;
+}
+
+.mini-info p {
+  padding: 0;
+  margin: 0;
+}
+
+.show-links {
+  text-align: center;
+}
+

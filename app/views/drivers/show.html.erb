@@ -1,45 +1,58 @@
-<h1><%=@driver.name%></h1>
-<p>Vin: <%=@driver.vin%></p>
-<p>This Driver is <%=@driver.available ? "Available" : "Unavailable"%></p>
-<p>Total Earned: <%=number_to_currency(@driver.total_earned)%></p>
-<p>Average Rating: <%=@driver.average_rating%></p>
+<div class='show-info'>
+  <div ><%= image_tag(Api.query, class: 'user-picture') %> </div>
+  <div class='user-info'>
+    <div class='show-title'>
+      <h1 class='show-name'><%=@driver.name%></h1>
+      <h3 class='show-avail'>This Driver is <%=@driver.available ? "Available" : "Unavailable"%></h3>
+    </div>
 
-<section class='driver-availablity'>
-  <% if !@driver.available%>
-    <%= link_to "Make Available", change_availability_path(@driver), method: :patch%>
-  <% else %>
-    <%= link_to "Make Unavailable", change_availability_path(@driver), method: :patch%>
-    <%end%>  
-</section>
+    <div class='mini-info'>
+      <p><span class='bold-tag'>VIN:</span> <%=@driver.vin%></p>
+      <p><span class='bold-tag'>Total Earned:</span> <%=number_to_currency(@driver.total_earned)%></p>
+      <p><span class='bold-tag'>Average Rating:</span> <%=@driver.average_rating%></p>
+    </div>
 
-
-<%= link_to "edit", edit_driver_path(@driver.id)%>
-<%= link_to "delete", driver_path(@driver.id), method: :delete%>
-
-<h3>Trips:</h3>
-<table>
-  <tr>
-    <th>id</th>
-    <th>date</th>
-    <th>rating</th>
-    <th>cost</th>
-    <th>passenger</th>
-  </tr>
-  <% @driver.trips.each do |trip|  %>
-    <tr>
-      <td><%= link_to trip.id, trip_path(trip.id)%></td>
-      <td><%=trip.date%></td>
-      <td><%=trip.rating%></td>
-      <td><%=number_to_currency(Trip.display_dollars(trip.cost))%></td>
-      <td>
-        <% if trip.passenger.nil?%>
-          Passenger does not exist
+    <div class='show-links'>
+      <section class='driver-availablity'>
+        <% if !@driver.available%>
+          <%= link_to "Make Available", change_availability_path(@driver), method: :patch%>
         <% else %>
-          <%= link_to trip.passenger.name, passenger_path(trip.passenger.id)%>
-        <% end %> 
-      </td> 
-    </tr> 
-  <% end %>
-</table>
+          <%= link_to "Make Unavailable", change_availability_path(@driver), method: :patch%>
+          <%end%>  
+      </section>
 
+      <%= link_to "Edit", edit_driver_path(@driver.id)%>
+      <%= link_to "Delete", driver_path(@driver.id), method: :delete%>
+    </div>
+  </div>
+</div>
+
+
+<div class='table-class'>
+  <h3>Trips</h3>
+  <table class="show-table">
+    <tr>
+      <th>id</th>
+      <th>date</th>
+      <th>rating</th>
+      <th>cost</th>
+      <th>passenger</th>
+    </tr>
+    <% @driver.trips.each do |trip|  %>
+      <tr>
+        <td><%= link_to trip.id, trip_path(trip.id)%></td>
+        <td><%=trip.date%></td>
+        <td><%=trip.rating%></td>
+        <td><%=number_to_currency(Trip.display_dollars(trip.cost))%></td>
+        <td>
+          <% if trip.passenger.nil?%>
+            Passenger does not exist
+          <% else %>
+            <%= link_to trip.passenger.name, passenger_path(trip.passenger.id)%>
+          <% end %> 
+        </td> 
+      </tr> 
+    <% end %>
+  </table>
+</div>
 
