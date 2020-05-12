@@ -2,14 +2,16 @@
   <div ><%= image_tag(Api.query, class: 'user-picture') %> </div>
   <div class='user-info'>
     <div class='show-title'>
-      <h1 class='show-name'><%=@driver.name%></h1>
-      <h3 class='show-avail'>This Driver is <%=@driver.available ? "Available" : "Unavailable"%></h3>
+      <h1><%=@driver.name%></h1>
+      <h3>This Driver is <%=@driver.available ? "Available" : "Unavailable"%></h3>
     </div>
 
     <div class='mini-info'>
       <p><span class='bold-tag'>VIN:</span> <%=@driver.vin%></p>
       <p><span class='bold-tag'>Total Earned:</span> <%=number_to_currency(@driver.total_earned)%></p>
       <p><span class='bold-tag'>Average Rating:</span> <%=@driver.average_rating%></p>
+      <%= link_to "Edit", edit_driver_path(@driver.id)%>
+      <%= link_to "Delete", driver_path(@driver.id), method: :delete%>
     </div>
 
     <div class='show-links'>
@@ -21,8 +23,7 @@
           <%end%>  
       </section>
 
-      <%= link_to "Edit", edit_driver_path(@driver.id)%>
-      <%= link_to "Delete", driver_path(@driver.id), method: :delete%>
+
     </div>
   </div>
 </div>

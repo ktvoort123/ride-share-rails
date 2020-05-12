@@ -126,6 +126,7 @@ a {
 .index-header {
   text-align: center;
   font-weight: bold;
+  padding-top: 25px;
 }
 
 .index-sub-header {
@@ -199,11 +200,11 @@ a {
 .user-picture {
   border-radius: 50%;
   width: 175px;
-  padding-top: 30px;
 }
 
 .table-class {
   text-align: center;
+  padding-top: 50px;
 }
 
 .bold-tag {
@@ -222,14 +223,74 @@ a {
 
 .mini-info {
   grid-row: 2 / span 1;
+  align-self: end;
+
 }
 
 .mini-info p {
   padding: 0;
   margin: 0;
+
 }
 
 .show-links {
   text-align: center;
+  align-self: end;
 }
 
+.passenger-name {
+  padding-top: 50px;
+  margin: 0;
+}
+
+.passenger-name h1 {
+  margin: 0;
+}
+
+.trip-info {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-right: auto;
+  margin-left: auto;
+  width: 750px;
+}
+
+.trip-details {
+  grid-column-start: 2;
+  padding-left: 25px;
+}
+
+.trip-picture {
+  border-radius: 50%;
+  place-self: center;
+}
+
+.trip-title {
+  text-align: center;
+  padding: 25px;
+}
+
+.edit-details {
+  text-align: center;
+  padding: 25px;
+}
+
+.form {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.errors {
+  text-align: center;
+  background-color: #598392;
+  list-style: none;
+  color: #EFF6E0;
+  font-size: 20px;
+}
+
+.user-title {
+  text-align: center;
+  padding: 25px;
+}

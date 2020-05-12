@@ -1,46 +1,49 @@
-<h1>Trip Show Page</h1>
+<h1 class='trip-title'>Gryft Hopes You Enjoyed Your Trip!</h1>
+<div class='trip-info'>
 
-<p>ID: <%=@trip.id%></p>
-<p>Date: <%=@trip.date%></p>
-<%# either display the rating, OR display the drop down menu with a link to submit it %>
+  <%= image_tag("https://picsum.photos/300/300", class: 'trip-picture') %>
 
-<% if @trip.rating%>
-  <p>Rating: <%= @trip.rating %></p>
-<%else%>
-  <section class = 'form'>
-    <%= form_with model: @trip, class: 'trip-form' do |f| %> 
+  <div class='trip-details'>
+    <p><span class='bold-tag'>Trip ID:</span> <%=@trip.id%></p>
+    <p><span class='bold-tag'>Date:</span> <%=@trip.date%></p>
 
-    <section>
-      <%= f.label :rating %>
-      <%= f.select :rating, [[nil,nil],[1,1],[2,2],[3,3],[4,4],[5,5],] %>
-    </section>
+    <% if @trip.rating%>
+      <p><span class='bold-tag'>Rating:</span> <%= @trip.rating %></p>
+    <%else%>
+      <section class = 'form'>
+        <%= form_with model: @trip, class: 'trip-form' do |f| %> 
 
-    <%= f.submit "Update Trip", class: "trip-button" %>
-    <% end %>
-  </section>
-<%end%>
+        <section>
+          <%= f.label :rating %>
+          <%= f.select :rating, [[nil,nil],[1,1],[2,2],[3,3],[4,4],[5,5],] %>
+        </section>
 
-
-<p>Cost: <%=number_to_currency(Trip.display_dollars(@trip.cost))%></p>
-<p>Passenger: 
-<%if @trip.passenger.nil?%>
- Passenger does not exist
-<%else%>
-  <%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id)%>
-<%end%>  
-</p> 
+        <%= f.submit "Update Trip", class: "trip-button" %>
+        <% end %>
+      </section>
+    <%end%>
 
 
-<p>Driver: 
-
-<%if @trip.driver.nil?%>
- Driver does not exist
-<%else%>
-  <%= link_to @trip.driver.name, driver_path(@trip.driver.id)%>
-<%end%>  
-</p> 
-
-<%= link_to "edit", edit_trip_path(@trip.id)%>
-<%= link_to "delete", trip_path(@trip.id), method: :delete%>
+    <p><span class='bold-tag'>Cost:</span> <%=number_to_currency(Trip.display_dollars(@trip.cost))%></p>
+    <p><span class='bold-tag'>Passenger:</span> 
+    <%if @trip.passenger.nil?%>
+    Passenger does not exist
+    <%else%>
+      <%= link_to @trip.passenger.name, passenger_path(@trip.passenger.id)%>
+    <%end%>  
+    </p> 
 
 
+    <p><span class='bold-tag'>Driver:</span> 
+
+    <%if @trip.driver.nil?%>
+    Driver does not exist
+    <%else%>
+      <%= link_to @trip.driver.name, driver_path(@trip.driver.id)%>
+    <%end%>  
+    </p> 
+
+    <%= link_to "Edit", edit_trip_path(@trip.id)%>
+    <%= link_to "Delete", trip_path(@trip.id), method: :delete%>
+  </div>
+</div>

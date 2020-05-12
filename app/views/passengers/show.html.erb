@@ -1,36 +1,50 @@
-<h1>Passenger Show Page</h1>
+<div class='show-info'>
+  <div ><%= image_tag(Api.query, class: 'user-picture') %> </div>
+  <div class='user-info'>
 
-<p>Name: <%=@passenger.name%></p>
-<p>Phone Number: <%=@passenger.phone_num%></p>
-<p>Total Spent: <%= number_to_currency(@passenger.total_spent) %> </p>
+    <div class='show-title passenger-name'>
+      <h1><%=@passenger.name%></h1>
+    </div>
 
-<%= link_to "edit", edit_passenger_path(@passenger.id)%>
-<%= link_to "delete", passenger_path(@passenger.id), method: :delete%>
+    <div class='mini-info'>
+      <p><span class='bold-tag'>Phone #:</span> <%=@passenger.phone_num%></p>
+      <p><span class='bold-tag'>Total Spent:</span> <%= number_to_currency(@passenger.total_spent) %> </p>
+      <%= link_to "Edit", edit_passenger_path(@passenger.id)%>
+      <%= link_to "Delete", passenger_path(@passenger.id), method: :delete%>
+    </div>
 
-<h3>Trips:</h3>
-<%= link_to "create new trip", passenger_trips_path(@passenger.id), method: :post%>
+  <div class='show-links'>
 
-<table>                         
-  <tr>                          
-    <th>ID</th>
-    <th>Date</th>
-    <th>Rating</th>
-    <th>Cost</th>
-    <th>Driver</th>
-  </tr>
-<% @passenger.trips.each do |trip|  %>
-  <tr>
-    <td><%= link_to trip.id, trip_path(trip.id) %></td>
-    <td><%= trip.date %></td> 
-    <td><%= trip.rating %></td> 
-    <td><%= number_to_currency(Trip.display_dollars(trip.cost)) %></td> 
-    <td>    
-      <% if trip.driver.nil?%>
-        Driver does not exist
-      <% else %>
-        <%= link_to trip.driver.name, driver_path(trip.driver.id) %>
-      <% end %> 
-    </td>
-  </tr>
-<% end %>
-</table> 
+    <%= link_to "Create New Trip", passenger_trips_path(@passenger.id), method: :post%>
+  </div>
+  </div>
+</div>
+
+
+<div class='table-class'>
+  <h3>Trips</h3>
+  <table class="show-table">                         
+    <tr>                          
+      <th>ID</th>
+      <th>Date</th>
+      <th>Rating</th>
+      <th>Cost</th>
+      <th>Driver</th>
+    </tr>
+  <% @passenger.trips.each do |trip|  %>
+    <tr>
+      <td><%= link_to trip.id, trip_path(trip.id) %></td>
+      <td><%= trip.date %></td> 
+      <td><%= trip.rating %></td> 
+      <td><%= number_to_currency(Trip.display_dollars(trip.cost)) %></td> 
+      <td>    
+        <% if trip.driver.nil?%>
+          Driver does not exist
+        <% else %>
+          <%= link_to trip.driver.name, driver_path(trip.driver.id) %>
+        <% end %> 
+      </td>
+    </tr>
+  <% end %>
+  </table> 
+</div>

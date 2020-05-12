@@ -1,4 +1,4 @@
-<h2>Edit A Trip - Right Here - Right Now</h2>
+<h2 class='edit-details'>Edit Your Trip's Details</h2>
 
 <% if @trip.errors.any? %>
   <ul class='errors'>
@@ -12,13 +12,14 @@
 
 <section class = 'form'>
   <%= form_with model: @trip, class: 'trip-form' do |f| %> 
-  <section>
+  <section class='date'>
     <%= f.label :date %>
     <%= f.date_field :date %> 
+  </section>
 
   <section>
-    <%= f.label :cost %> (in cents)
-    <%= f.text_field :cost %> 
+    <%= f.label :cost %>
+    <%= f.text_field :cost, placeholder: "enter in cents" %> 
   </section>
 
   <section>
