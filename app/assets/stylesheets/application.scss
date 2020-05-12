@@ -33,24 +33,23 @@ a {
 }
 
 .content {
-  padding-left: 20px;
-  padding-top: 10px;
   font-family: 'Montserrat', sans-serif;
 }
 
-
  /* Dropdown Button */
  .dropbtn {
+  font-family: 'Montserrat', sans-serif;
   background-color: #EFF6E0;
   color: #01161E;
   padding: 16px;
   font-size: 16px;
   border: none;
   width: 125px;
-
+  margin: 0px 20px;
 }
 
 .dropbtn a {
+  font-family: 'Montserrat', sans-serif;
   color: #01161E;
 }
 
@@ -72,6 +71,7 @@ a {
 
 /* Links inside the dropdown */
 .dropdown-content a {
+  font-family: 'Montserrat', sans-serif;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -89,7 +89,7 @@ a {
 
 .header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 3fr;
   background-color: #01161E;
   padding: 20px 0px;
 }
@@ -98,7 +98,20 @@ a {
   padding-left: 50px;
   color: #01161E;
   font-family: 'Pacifico', cursive;
+  grid-column-start: 1;
   text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+.tagline {
+  font-size: 15px;
+  color: #EFF6E0;
+  font-family: 'Montserrat', sans-serif;
+  grid-column: 2 / span 2;
+  align-self: center;
+}
+
+.nav-buttons {
+  grid-column-start: 4;
 }
 
 .index-header {
@@ -120,4 +133,40 @@ a {
   margin-left: auto;
   width: 700px;
   background-color: #EFF6E0; 
+}
+
+.homepage-container {
+  position: relative;
+  text-align: center;
+}
+
+.homepage-img {
+  max-width: 100%;
+  height: auto;
+  filter: blur(3px);
+}
+
+.centered {
+  position: absolute;
+  width: 1000px;
+  font-size: 80px;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #01161E;
+}
+
+.index-text {
+  padding: 10px;
+  font-size: 75px;
+  text-shadow: 3px 3px 3px #EFF6E0;
+}
+
+
+
+.logo {
+  color: #01161E;
+  font-size: 150px;
+  font-family: 'Pacifico', cursive;
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
