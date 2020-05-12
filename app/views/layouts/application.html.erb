@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&display=swap" rel="stylesheet"> 
   </head>
 
@@ -36,13 +36,12 @@
   </header>
 
 
+    <body>
+      <div class="content">
+        <%= yield %>
+      </div>
+    </body>
 
-  <body>
-    <%= yield %>
-  </body>
 
-  <footer>
-    America's number one ride share app - not stealing your money since 2020!
-  </footer>
 </html>
 

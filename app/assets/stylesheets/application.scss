@@ -24,9 +24,24 @@ nav {
   padding-right: 20px;
 }
 
+body {
+  background-color: #aec3b0
+}
+
+a {
+  color: #598392;
+}
+
+.content {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
  /* Dropdown Button */
  .dropbtn {
-  background-color: #AEC3B0;
+  background-color: #EFF6E0;
   color: #01161E;
   padding: 16px;
   font-size: 16px;
@@ -70,7 +85,7 @@ nav {
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #EFF6E0;} 
+.dropdown:hover .dropbtn {background-color: #FF2D95;} 
 
 .header {
   display: grid;
@@ -81,7 +96,28 @@ nav {
 
 .header-title {
   padding-left: 50px;
-  color: #EFF6E0;
+  color: #01161E;
   font-family: 'Pacifico', cursive;
-  
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+.index-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+.index-sub-header {
+  text-align: center;
+  font-style: italic;
+}
+
+.index-description {
+  text-align: center;
+}
+
+.index-table {
+  margin-right: auto;
+  margin-left: auto;
+  width: 700px;
+  background-color: #EFF6E0; 
 }
